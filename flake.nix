@@ -65,6 +65,9 @@
             programs.rustfmt.enable = true;
             settings.formatter.rustfmt.command = "${rust}/bin/rustfmt";
 
+            # Prettier
+            programs.prettier.enable = true;
+
             # TOML
             programs.taplo.enable = true;
 
