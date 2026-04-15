@@ -1,4 +1,4 @@
-use dioxus::prelude::*;
+use dioxus::{html::img, prelude::*};
 
 #[derive(Debug, Clone, Routable, PartialEq)]
 #[rustfmt::skip]
@@ -10,7 +10,7 @@ enum Route {
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
 const MAIN_CSS: Asset = asset!("/assets/main.css");
-const HEADER_SVG: Asset = asset!("/assets/header.svg");
+const HARUKI7049: Asset = asset!("/assets/haruki7049.png");
 
 #[component]
 pub fn App() -> Element {
@@ -21,29 +21,54 @@ pub fn App() -> Element {
     }
 }
 
+/// Home page
 #[component]
-fn Hero() -> Element {
+fn Home() -> Element {
     rsx! {
         div {
-            id: "hero",
-            img { src: HEADER_SVG, id: "header" }
-            div { id: "links",
-                a { href: "https://dioxuslabs.com/learn/0.7/", "📚 Learn Dioxus" }
-                a { href: "https://dioxuslabs.com/awesome", "🚀 Awesome Dioxus" }
-                a { href: "https://github.com/dioxus-community/", "📡 Community Libraries" }
-                a { href: "https://github.com/DioxusLabs/sdk", "⚙️ Dioxus Development Kit" }
-                a { href: "https://marketplace.visualstudio.com/items?itemName=DioxusLabs.dioxus", "💫 VSCode Extension" }
-                a { href: "https://discord.gg/XgGxMSkvUM", "👋 Community Discord" }
+            id: "greeting",
+
+            Greeting { }
+            ProjectsList { }
+        }
+    }
+}
+
+#[component]
+fn Greeting() -> Element {
+    rsx! {
+        div {
+            id: "greeting",
+
+            img { src: HARUKI7049 }
+            h1 { "Haruki7049" }
+            p { "A Rustacean, Zig user, and heavy Nix / NixOS user." }
+        }
+    }
+}
+
+#[component]
+fn ProjectsList() -> Element {
+    rsx! {
+        div {
+            id: "projects-list",
+
+            h1 { "Projects" }
+            ul {
+                li { AboutLightmix { } }
             }
         }
     }
 }
 
-/// Home page
 #[component]
-fn Home() -> Element {
+fn AboutLightmix() -> Element {
     rsx! {
-        Hero {}
+        div {
+            class: "about_project",
+            p { "lightmix: Audio processing library written by Zig-lang" }
+            a { href: "https://github.com/haruki7049/lightmix", "GitHub" }
+        }
     }
 }
 
