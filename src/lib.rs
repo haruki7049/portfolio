@@ -1,4 +1,4 @@
-use dioxus::{html::img, prelude::*};
+use dioxus::prelude::*;
 
 #[derive(Debug, Clone, Routable, PartialEq)]
 #[rustfmt::skip]
